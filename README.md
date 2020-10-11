@@ -7,19 +7,58 @@
 
 # Vue Weather App
 
-# Built Using
+A weather application built using Vue.js that fetches the current weather from cities and states
+
+## Built Using
 
 - Vue.js
+- Vue CLI
 - Javascipt (ECMAScript 2020)
 
-# Credit
+## Quickstart
 
-[cbedroid][link-author]
+**Project Setup and Build**
 
-## Project setup
+- **Clone this repo:**
 
+```bash
+$  git clone https://github.com/cbedroid/vue-weather-app.git
 ```
-yarn install
+
+- **To Install:**
+
+```bash
+$  cd vue-weather-app
+$  yarn install
 ```
+
+- **To Run:**
+
+```bash
+$  yarn serve
+```
+
+## Contributing
+
+**Want to contribute to this project?**
+
+- :fork_and_knife: Fork this [repo][link-repo]
+- :fire: Add your awesome new feature
+- :point_right: Submit a [pull request][link-pull-request]
+
+## Issue
+
+**..So you found a bug :bug: now what...**
+
+Just open up an issue and describe the problems your are experiencing.
+
+- [issue][link-issue] - Describe the bug you are having here
+
+## Credit
+
+- [Cbedroid][link-author]
 
 [link-author]: https://twitter.com/cbedroid
+[link-issue]: https://github.com/cbedroid/vue-weather-app/issues/new
+[link-pull-request]: https://github.com/cbedroid/vue-weather-app/pull/master
+[link-repo]: https://github.com/cbedroid/vue-weather-app/
