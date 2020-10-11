@@ -11,8 +11,6 @@ A weather application built using Vue.js that fetches the current weather from c
 
 ### DEMO **:rocket: [RUN DEMO](https://cbedroid.github.io/vue-weather-app/)**
 
-
-
 ## Built Using
 
 - Vue.js
