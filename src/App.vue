@@ -20,7 +20,7 @@
           <div id="location">
             {{ weather.name }}, {{ this.state }} {{ weather.sys.country }}
           </div>
-          <div id="date">Sunday Nov 9, 2020</div>
+          <div id="date">{{ createDate() }}</div>
         </div>
         <!-- Location and date -->
         <!--Temperature -->
@@ -41,7 +41,7 @@
       <div class="weather-container" v-else>
         <!-- Location and date -->
         <div class="location-tray">
-          <div id="location">Virginia Beach, Virginia</div>
+          <div id="location">Your City, Your State</div>
           <div id="date">Sunday Nov 9, 2020</div>
         </div>
         <!-- Location and date -->
@@ -63,6 +63,23 @@
 <script>
 export default {
   name: "App",
+  //mounted() {
+  // load placesearch script for async searching for cities an state
+  //   let external_script = document.createElement("script");
+  //   external_script.setAttribute(
+  //     "src",
+  //     "https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.js"
+  //   );
+
+  //   // load css
+  //   let external_css = document.createElement("link");
+  //   external_css.setAttribute(
+  //     "href",
+  //     "https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"
+  //   );
+  //   document.head.appendChild(external_script);
+  //   document.head.appendChild(external_css);
+  // },
   data() {
     return {
       bg_class: "cloudy",
@@ -73,6 +90,7 @@ export default {
       state: "",
       temp: "",
       api_key: process.env.VUE_APP_WEATHER_API_KEY,
+      search_key: process.env.VUE_APP_MAPQUEST_API_KEY || "",
     };
   },
   methods: {
@@ -100,50 +118,84 @@ export default {
       this.bg_class = bg_class || "cloudy";
     },
 
-    setInput(placeholder = "City, State") {
+    resetSearch(placeholder = "City, State") {
       const search_input = document.getElementById("search_input");
       search_input.setAttribute("placeholder", placeholder);
       search_input.value = "";
       this.search = "";
     },
 
-    validate_city_state(location) {
-      let city = location[1];
-      let state = location[2];
-      console.log({ city }, { state });
+    validate_city_state() {
+      //let loc = this.search.match(/(\w*\s?)[\W]*(\w*)/i);
+      //let city = this.search.match(/(\w*\s*){0,2}\W*/i)[0]
+      //let location = this.search.match(/([\w\s]*)\W*(\w*)/i)[0]
+      let location = this.search
+        .match(/(\w*)*[\W]*/gi)
+        .filter((nonull) => nonull);
 
+      let filtered_location =
+        location
+          .slice(0, -1)
+          .join("")
+          .replace(/\W/g, " ")
+          .trim() +
+        "," +
+        location.slice(-1)[0].trim();
+
+      // TODO: Add error for null filtered_locations
+      let state = location.slice(-1)[0].trim();
       // Check if state has a value
       if (!state) {
-        this.setInput("A state must be enter along with a city");
+        this.resetSearch("A state must be enter along with a city");
       } else {
-        city = city.replace(/\W/gi, "");
-        state = state.replace(/\W/gi, "");
-        console.log("Cleaned city and state", { city }, { state });
+        this.state = state.toUpperCase();
+        console.log("Cleaned city and state", filtered_location);
       }
 
       // Check if state code is only two letters
       if (state.length > 2) {
-        this.setInput("State code must be only two letter. EX: CA");
+        this.resetSearch("State code must be only two letter. EX: CA");
       }
 
-      return { city: city, state: state };
+      return filtered_location;
+    },
+    createDate() {
+      let td = new Date();
+      let months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      let days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      let day = days[td.getDay()];
+      let date = td.getDate();
+      let month = months[td.getMonth()];
+      let year = td.getFullYear();
+      return `${day} ${month} ${date} ${year}`;
     },
     getWeather(e) {
       if (e.key == "Enter") {
-        let loc = this.search.match(/(\w*\s?)[\W]*(\w*)/i);
-        let { city, state } = this.validate_city_state(loc);
-
-        if (
-          city === undefined ||
-          city === "undefined" ||
-          state === undefined ||
-          state == "undefined"
-        ) {
-          return;
-        }
+        let location = this.validate_city_state();
 
         const unit = "imperial";
-        const weather_url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state},US&units=${unit}&appid=${this.api_key}`;
+        const weather_url = `https://api.openweathermap.org/data/2.5/weather?q=${location},US&units=${unit}&appid=${this.api_key}`;
         console.log({ weather_url });
 
         fetch(weather_url)
@@ -151,11 +203,12 @@ export default {
           .then((data) => {
             console.log({ data });
             this.weather = data;
-            this.state = state.toUpperCase();
+            console.log("condition", this.weather.weather[0].main);
             this.setBackgroundImage();
-            this.setInput();
+            this.resetSearch();
           })
           .catch((err) => {
+            this.resetSearch("Opps, that city was not found");
             console.log("Error", err);
           });
       } // if statement
