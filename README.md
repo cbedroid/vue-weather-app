@@ -6,6 +6,7 @@
 </div>
 
 # Vue Weather App
+### DEMO **:rocket: [RUN DEMO](https://cbedroid.github.io/vue-weather-app/)**
 
 A weather application built using Vue.js that fetches the current weather from cities and states
 
