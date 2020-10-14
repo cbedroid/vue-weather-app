@@ -1,21 +1,22 @@
 <template>
-  <div class="main-container my-2 mx-3 p-1">
-    <div class="weather-app">
+  <div class="main-container my-2">
+    <div class="weather-app p-2">
       <Search v-on:click.prevent @setWeather="getWeather" />
-      <div class="weather-details d-flex m-t-2 ml-3 px-2">
-        <Location
-          :date="this.weather.time || {}"
-          :city="this.weather.city"
-          :state="this.weather.state"
-          :error="error"
-        >
-        </Location>
-        <Forecast
-          :temperature="this.weather.temperature"
-          :condition="this.weather.condition"
-        >
-        </Forecast>
+      <div class="border-top w-100 d-block my-3"></div>
+      <div class="weather-details mt-2  px-2 row ">
+        <div class="col-sm-5 col-md-6 col-lg-6  ">
+          <Location :location="this.weather.location || {}" :error="error">
+          </Location>
+        </div>
+        <div class="col-sm-7 col-md-6 col-lg-6   ">
+          <Forecast
+            :temperature="this.weather.temperature"
+            :condition="this.weather.condition"
+          >
+          </Forecast>
+        </div>
       </div>
+      <WeeklyWeather :dailyforecast="this.weather.daily"> </WeeklyWeather>
     </div>
   </div>
 </template>
@@ -24,6 +25,7 @@
 import Location from "./Location";
 import Search from "./Search";
 import Forecast from "./Forecast";
+import WeeklyWeather from "./WeeklyWeather";
 
 export default {
   name: "WeatherApp",
@@ -31,6 +33,7 @@ export default {
     Search,
     Location,
     Forecast,
+    WeeklyWeather,
   },
 
   props: {
@@ -70,8 +73,10 @@ export default {
     },
     setResultFailed() {
       /* Invalid City or state, Remove populated data and display error message to user */
-      this.weather["city"] = "Error";
-      this.weather["state"] = this.weather.results.error.msg;
+      this.error = true;
+      this.weather["location"] = {};
+      this.weather.location["city"] = "Error:";
+      this.weather.location["state"] = this.weather.results.error.msg;
       this.weather.condition = {};
       this.weather.temperature = {};
     },
@@ -86,13 +91,11 @@ export default {
   background: #000;
   margin: 0 auto;
   text-align: center;
-  background: inherit;
+  background: transparent;
 }
 .weather-details {
   background-size: cover;
   background-position: center;
   transition: 0.4s;
-  //background: whitesmoke;
-  //background-image: url("../assets/images/raining.png");
 }
 </style>
