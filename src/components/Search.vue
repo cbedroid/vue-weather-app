@@ -1,16 +1,13 @@
 <template>
-  <div class="input-container my-3 mx p-2">
-    <div
+  <div class="input-container my-3 mx-4 p-2 ">
+    <b-input-group
+      size="small"
       id="search-wrapper"
-      class="d-flex justify-content-center mx-auto align-content-center bg-light text-center w-50"
+      class="mx-auto bg-light text-center w-100"
     >
-      <div class="icon-wrapper p-1 text-center text-dark">
-        <b-icon-search
-          class="mx-2"
-          id="search_icon"
-          aria-hidden="true"
-        ></b-icon-search>
-      </div>
+      <b-input-group-prepend class="icon-wrapper text-dark" is-text>
+        <b-icon icon="search" id="search_icon" aria-hidden="true"></b-icon>
+      </b-input-group-prepend>
       <b-form-input
         @keypress="setSearch"
         class="text-center text-dark"
@@ -20,10 +17,10 @@
         id="search_input"
         placeholder="City,State"
       />
-    </div>
-    <h1>Hello {{ search }}</h1>
+    </b-input-group>
   </div>
 </template>
+
 <script>
 export default {
   name: "Search",
@@ -36,31 +33,32 @@ export default {
     setSearch(e) {
       if (e.key == "Enter" && this.search.length !== 0) {
         //alert("running");
-        let params = { location: this.search };
-        //console.log({ params });
+        let params = {
+          location: this.search,
+        };
         this.$emit("setWeather", this.search);
+        this.search = "";
         return params;
       }
     },
-
-    // updateSearch(data) {
-    //   this.search = data;
-    // },
   },
 };
 </script>
+
 <style>
 .input-container {
-  display: block;
-  background: #000;
-  margin: auto;
-  text-align: center;
+  background: transparent;
+  border-radius: 7px;
 }
 
+#search-wrapper,
+#search_icon,
+.icon-wrapper {
+  border-radius: 7px;
+}
 #search-wrapper {
   align-self: center;
   justify-self: center;
-  border-radius: 7px;
 }
 
 #search_icon {
@@ -70,6 +68,7 @@ export default {
 }
 
 #search_input {
+  color: #000;
   text-align: center;
   font-size: 18px;
   font-style: italic;
@@ -77,12 +76,19 @@ export default {
   appearance: none;
   border: none;
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(175, 175, 175, 0.35);
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
 }
 
 #search_input:hover,
 #search_input:focus {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 1);
+  background: #fff;
+  color: #000;
+}
+
+#search_input:focus {
+  font-weight: 530;
+  font-style: normal;
 }
 </style>
