@@ -1,17 +1,22 @@
 <template>
   <div class="main-container my-2 mx-3 p-1">
     <div class="weather-app">
-      <Search
-        v-on:click.prevent
-        :placeholder="this.placeholder"
-        @setWeather="getWeather"
-      />
+      <Search v-on:click.prevent @setWeather="getWeather" />
       <div class="weather-details d-flex m-t-2 ml-3 px-2">
-        <Location :city="city" :state="state"> </Location>
-        <Forecast :temperature="temperature" :condition="condition"></Forecast>
+        <Location
+          :date="this.weather.time || {}"
+          :city="this.weather.city"
+          :state="this.weather.state"
+          :error="error"
+        >
+        </Location>
+        <Forecast
+          :temperature="this.weather.temperature"
+          :condition="this.weather.condition"
+        >
+        </Forecast>
       </div>
     </div>
-    <h1>This {{ search }}</h1>
   </div>
 </template>
 
@@ -36,32 +41,39 @@ export default {
   },
   data() {
     return {
-      search: "nothing",
-      city: "Your City",
-      state: "Your State",
-      placeholder: "",
-      temperature: 90,
-      condition: "Cloudy",
+      error: false,
     };
   },
   computed: {
-    filterSearch() {
-      return "non";
+    getTime() {
+      return (
+        this.weather.time || {
+          timenow: new Date().getTime(),
+          sunrise: null,
+          sunset: null,
+        }
+      );
     },
   },
   methods: {
     getWeather(location) {
-      alert("running");
+      this.error = false;
       let params = { location: location };
-      let weather = this.weather.getWeather(params);
-      console.log("Real Weather", weather);
+      let GW = this.weather.getWeather(params);
+      let data = this.weather;
+      GW.then((resp) => {
+        if (data.data == false || resp["cod"] !== 200) {
+          return this.setResultFailed();
+        }
+        this.search = this.weather.city;
+      });
     },
-
-    setForecast() {
-      return this.temperature ? this.temperature : 80;
-    },
-    setCondition() {
-      return this.condition ? this.condition : "cloudy";
+    setResultFailed() {
+      /* Invalid City or state, Remove populated data and display error message to user */
+      this.weather["city"] = "Error";
+      this.weather["state"] = this.weather.results.error.msg;
+      this.weather.condition = {};
+      this.weather.temperature = {};
     },
   },
 };

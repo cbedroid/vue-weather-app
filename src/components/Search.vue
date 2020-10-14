@@ -18,7 +18,7 @@
         type="text"
         name="search_input"
         id="search_input"
-        :placeholder="setPlaceholder"
+        placeholder="City,State"
       />
     </div>
     <h1>Hello {{ search }}</h1>
@@ -27,26 +27,14 @@
 <script>
 export default {
   name: "Search",
-  props: {
-    placeholder: {
-      type: String,
-      required: true,
-    },
-  },
   data() {
     return {
       search: "",
-      dplaceholder: "City,State",
     };
-  },
-  computed: {
-    setPlaceholder() {
-      return this.placeholder ? this.placeholder : this.dplaceholder;
-    },
   },
   methods: {
     setSearch(e) {
-      if (e.key == "Enter") {
+      if (e.key == "Enter" && this.search.length !== 0) {
         //alert("running");
         let params = { location: this.search };
         //console.log({ params });
