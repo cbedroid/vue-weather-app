@@ -23,18 +23,19 @@ async function callback(err, stdout, stdin) {
     return;
   }
   //it worked
+  console.log("** MESSAGE ***\n\n", stdout);
   return true;
 }
 
 async function gitPush() {
   /* Staging Git Files */
-  if (!exec(" git add .", await callback)) {
+  if (!exec(" git add .", callback)) {
     console.log("-- Error adding files");
     return;
   }
 
   /* Adding Git Message */
-  if (!exec(` sudo git commit -m "${str}"`, await callback)) {
+  if (!exec(` sudo git commit -m "${str}"`, callback)) {
     console.log("-- Commit messages failed");
     return;
   }
@@ -42,7 +43,7 @@ async function gitPush() {
   /* Pushing TO Github */
 
   // First get current branch
-  let branch = await exec(
+  let branch = exec(
     ` git branch | grep "*" | sed -e 's,*,,g'`,
     (err, stdout, stdin) => {
       if (err) {
@@ -55,7 +56,7 @@ async function gitPush() {
   );
 
   // Push the commit to GitHub
-  console.log("BRANCH", branch);
+  //console.log('BRANCH',branch);
   /*
 		* if(branch){
 	  exec(` git push origin ${branch}`, (err,stdout,stdin)=>{
