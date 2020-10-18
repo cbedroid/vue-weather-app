@@ -23,7 +23,6 @@ async function callback(err, stdout, stdin) {
     return;
   }
   //it worked
-  console.log("** MESSAGE ***\n\n", stdout);
   return true;
 }
 
@@ -56,7 +55,7 @@ async function gitPush() {
   );
 
   // Push the commit to GitHub
-  //console.log('BRANCH',branch);
+  if (branch) console.log("\n\n***BRANCH **\n\n", branch);
   /*
 		* if(branch){
 	  exec(` git push origin ${branch}`, (err,stdout,stdin)=>{
