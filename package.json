@@ -12,7 +12,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "gitpush": "sudo node /usr/lib/node_modules/gitty.js"
+    "gitpush": "node gitty.js"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.11.2",
