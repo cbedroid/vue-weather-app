@@ -43,7 +43,7 @@ async function gitPush() {
 
   // First get current branch
   let branch = exec(
-    ` git branch | grep "*" | sed -e 's,*,,g'`,
+    ` echo -e "HELLO WORLD" | grep "*" | sed -e 's,*,,g'`,
     (err, stdout, stdin) => {
       if (err) {
         console.log(err.message);
