@@ -2,10 +2,17 @@
   "name": "vue-weather",
   "version": "0.1.0",
   "private": true,
+  "author": "Cornelius Brooks <cbedroid1614@gmail.com>",
+  "license": "MIT",
+  "bug": {
+    "url": "https://github.com/cbedroid/vue-weather-app/issues"
+  },
+  "homepage": "https://github.com/cbedroid/vue-weather-app#readme",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "gitpush": "sudo node /usr/lib/node_modules/gitty.js"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.11.2",

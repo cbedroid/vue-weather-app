@@ -4,10 +4,9 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-12 col-lg-10">
-            <main class="pt-3 border-success">
-              <h1 class="text-light font-weight-bold">
-                Weather App
-              </h1>
+            <main class="p-0 border-success">
+              <Header :title="'Weather App'"></Header>
+              <hr class="h-2 my-1" />
               <WeatherApp :weather="weather"></WeatherApp>
             </main>
           </div>
@@ -21,12 +20,14 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import WeatherApp from "./components/WeatherApp";
+import Header from "./components/Header";
 import WeatherService from "./services/WeatherService.js";
 
 export default {
   name: "App",
   components: {
     WeatherApp,
+    Header,
   },
 
   data() {

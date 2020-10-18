@@ -1,42 +1,15 @@
 <template>
   <div id="weather-week_main" class="mt-3 container ">
+    <h1>length {{ dailyforecast.length }}</h1>
     <ul class="weather-week-list p-0  row justify-content-center">
       <li
-        class="list-item mx-1 col-12 col-sm-3 col-md-2 "
+        class="list-item font-weight-bold mx-1 col-12 col-sm-3 col-md-2 "
         :class="isDayTime ? 'day-theme' : 'night-theme'"
-        v-for="forecast in dailyforecast"
-        v-bind:key="forecast.dt || 0"
-        @mouseover="normalFalse"
-        @mouseleave="normalTrue"
+        v-for="(fc, index) in dailyforecast"
+        :forecast="currentForecast(fc)"
+        v-bind:key="index"
       >
-        <div class="item-wrapper  w-100">
-          <div class="daytime text-primary ">
-            <p class=" d-block px-4 w-100">
-              {{ getDay(forecast.dt) }}
-            </p>
-          </div>
-          <div class="content">
-            <b-img
-              blank-color="#777"
-              :src="forecast_icon(forecast.weather[0]['icon'])"
-              alt="forecast icon"
-            >
-            </b-img>
-
-            <div class="temp">
-              <b-icon
-                icon="thermometer"
-                :variant="
-                  get_temp(forecast['temp']) < 75 ? 'primary' : 'danger'
-                "
-              ></b-icon>
-              {{ get_temp(forecast["temp"]) }} &deg;
-            </div>
-            <div class="condition">
-              {{ forecast["weather"][0]["main"] }}
-            </div>
-          </div>
-        </div>
+        <h4>{{ forecast }}</h4>
       </li>
     </ul>
   </div>
@@ -68,6 +41,13 @@ export default {
   },
 
   methods: {
+    currentForecast(forecast) {
+      /* returns day or night forecast.*/
+
+      //let fc = this.isDayTime ? forecast["day"] : forecast["night"];
+      //console.log({ fc });
+      return forecast;
+    },
     normalFalse() {
       this.normal = false;
     },
