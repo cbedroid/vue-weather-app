@@ -1,7 +1,7 @@
 <template>
-  <div class="location-container mx-auto w-100 text-left pl-2">
+  <div class="location-container mx-auto w-100 text-left pl-2 py-4">
     <div
-      class="place text-left"
+      class="place text-left p-3"
       :style="{ backgroundImage: `url('${state_image}')` }"
     >
       <div
@@ -64,7 +64,7 @@ export default {
 </script>
 <style scoped>
 .location-container {
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   text-shadow: 2px 2px 16px blue;
 }
@@ -76,6 +76,7 @@ export default {
   left: 0;
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
 }
 
 .label {

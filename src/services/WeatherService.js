@@ -241,24 +241,31 @@ class WeatherService {
 
     // remove the first forecast if forecast exist
     this.daily = daily ? daily.slice(1) : daily;
-    await this.setWeekForecast();
+    await this.setWeeklyForecast();
   }
 
-  setWeekForecast() {
+  setWeeklyForecast() {
     if (this.daily) {
       this.daily = this.daily.map((data) => {
         let { dt, temp, weather } = data;
         weather = weather[0];
+        let wicon = weather["icon"];
         let night = {
+          updated: false, // to update DOM
+          className: "night-theme",
           hovering: false,
           dt,
           weather,
+          icon: wicon.replace(/[nd]/g, "n") || wicon,
           temp: Math.round(temp["night"]),
         };
         let day = {
+          updated: false, // to update DOM
+          className: "day-theme",
           hovering: false,
           dt,
           weather,
+          icon: wicon.replace(/[nd]/g, "d") || wicon,
           temp: Math.round(temp["day"]),
         };
         return { day, night };

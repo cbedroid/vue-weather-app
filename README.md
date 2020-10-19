@@ -37,19 +37,20 @@ A Vue Weather Appication that fetches the current weather forecast from local ci
 
 <img style="margin-right: 10px" src="https://vuejs.org/images/logo.png "  width="40" height="40" />
 
-[Vue](https://vuejs.org/)
-[![VueJS](https://img.shields.io/badge/VueJs-v1.2.3.-blue)](http://vuejs.org)
+[![VueJS](https://img.shields.io/badge/VueJs-v2.17.3-blue)](http://vuejs.org)
 
 </li>
 <li style="display:flex; align-items:center;margin:5px;">
-  <img style="margin-right: 10px" src="https://vuejs.org/images/logo.png "  width="40" height="40" />
+  <img style="margin-right: 10px" src="https://pbs.twimg.com/profile_images/1273081551354396672/-Tzadxix_400x400.jpg"  width="40" height="40" />
 
-[Vue.js](https://vuejs.org/)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-v4.5-purple)](https://getbootstrap.com)
 
 </li>
-<ul>
+</ul>
 
-## Quickstart
+---
+
+# Quickstart
 
 **Project Setup and Build**
 
