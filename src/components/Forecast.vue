@@ -22,7 +22,7 @@
             </b-icon>
           </span>
           <span class="content"
-            >{{ current_temperature || "unknown" }}
+            >{{ current_temperature || "" }}
             {{ current_temperature ? "&deg;" : "" }}
           </span>
         </div>
@@ -30,7 +30,7 @@
           <span class="label "></span>
           <b-icon icon="cloud-fill" scale="1.8" class="mr-3" shift-h="-7">
           </b-icon>
-          <span class="content">{{ current_condition || "unknown" }}</span>
+          <span class="content">{{ current_condition || "" }}</span>
         </div>
       </div>
     </div>
@@ -61,17 +61,15 @@ export default {
       return this.convertDate(datetime);
     },
     current_temperature() {
-      let temp = this.temperature
-        ? Math.round(this.temperature.temp)
-        : "unknown";
+      let temp = this.temperature ? Math.round(this.temperature.temp) : "";
       return temp;
     },
     current_condition() {
-      let condition = this.condition ? this.condition.main : "unknown";
+      let condition = this.condition ? this.condition.main : "";
       return condition;
     },
     current_description() {
-      let desc = this.condition ? this.condition.decsciption : "unknown";
+      let desc = this.condition ? this.condition.decsciption : "";
       return desc;
     },
     forecast_icon() {

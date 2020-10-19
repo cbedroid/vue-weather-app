@@ -1,15 +1,40 @@
 <template>
   <div id="weather-week_main" class="mt-3 container ">
-    <h1>length {{ dailyforecast.length }}</h1>
     <ul class="weather-week-list p-0  row justify-content-center">
       <li
-        class="list-item font-weight-bold mx-1 col-12 col-sm-3 col-md-2 "
-        :class="isDayTime ? 'day-theme' : 'night-theme'"
+        class="forecast-item font-weight-bold mx-1 p-0 col-12 col-sm-3 col-md-2 "
         v-for="(fc, index) in dailyforecast"
-        :forecast="currentForecast(fc)"
+        :forecast="(forecast = currentForecast(fc, (hoverstate = false)))"
         v-bind:key="index"
+        @mouseenter="toggleHover(forecast, index, true)"
+        @mouseleave="toggleHover(forecast, index, false)"
       >
-        <h4>{{ forecast }}</h4>
+        <div class="item-wrapper " :class="forecast['className']">
+          <div class="daytime text-primary ">
+            <p class=" d-block px-4 w-100">
+              {{ getDay(forecast.dt) }}
+            </p>
+          </div>
+          <div class="content">
+            <b-img
+              blank-color="#777"
+              :src="forecast_icon(forecast)"
+              alt="forecast icon"
+            >
+            </b-img>
+
+            <div class="temp">
+              <b-icon
+                icon="thermometer"
+                :variant="forecast['temp'] < 75 ? 'primary' : 'danger'"
+              ></b-icon>
+              {{ forecast["temp"] }} &deg;
+            </div>
+            <div class="condition">
+              {{ forecast["weather"]["main"] }}
+            </div>
+          </div>
+        </div>
       </li>
     </ul>
   </div>
@@ -36,23 +61,36 @@ export default {
       let sunrise = 6;
       let sunset = 18;
       let daytime = new Date().getTime();
-      return sunrise < daytime > sunset ? this.normal : !this.normal;
+      return sunrise < daytime > sunset;
     },
   },
 
   methods: {
     currentForecast(forecast) {
-      /* returns day or night forecast.*/
+      /* Returns day or night forecast.*/
 
-      //let fc = this.isDayTime ? forecast["day"] : forecast["night"];
-      //console.log({ fc });
-      return forecast;
+      let fc = this.isHovering(forecast) ? forecast["day"] : forecast["night"];
+      return fc;
     },
-    normalFalse() {
-      this.normal = false;
+    toggleHover(forecast, index, hoverstate) {
+      /* Change the hovering attribute on forecast item
+         Removes and sets the hovering state of each individualforecast
+      */
+      forecast["hovering"] = hoverstate; //          Apparently.. This is needed to update DOM ??
+      //                                  \__(- -)
+      //                                      | |
+      this.dailyforecast[index]["hovering"] = hoverstate;
     },
-    normalTrue() {
-      this.normal = true;
+    isHovering(forecast) {
+      /* hovering will revserse the current day time from night to day
+       and vice versa
+       */
+      try {
+        let hoverstate = forecast["hovering"];
+        return hoverstate ? !this.DayTime : this.DayTime;
+      } catch {
+        return false;
+      }
     },
     get_temp(temp) {
       let time_of_day = this.isDayTime ? "day" : "night";
@@ -63,10 +101,8 @@ export default {
       let datetime = new Date(date * 1000).getDay();
       return days[datetime] || "N/A";
     },
-    forecast_icon(icon = "01") {
-      let icon_choice = this.isDayTime ? "d" : "n";
-      icon = icon ? icon.replace(/[nd]/g, "") : "";
-      return `http://openweathermap.org/img/wn/${icon}${icon_choice}.png`;
+    forecast_icon(forecast) {
+      return `http://openweathermap.org/img/wn/${forecast["icon"]}.png`;
     },
   },
 };
@@ -79,11 +115,13 @@ export default {
   transition: 0.25s ease-in-out;
 }
 
-.weather-week-list li:hover {
+.forecast-item:hover {
   border: 1px solid #000;
   box-shadow: 4px 2px 6px #000;
   transform: scale(1.25);
+  z-index: 100;
 }
+
 .daytime {
   background: #fff;
   width: 100%;
