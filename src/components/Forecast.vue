@@ -123,6 +123,14 @@ export default {
   font-weight: 600;
 }
 
+.forecast-main .forecast-condition {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3px 0;
+  padding: 5px;
+}
 .forecast-container .label {
   text-align: left;
   font-size: 1rem;
@@ -147,16 +155,7 @@ export default {
     padding: 0 15px;
   }
 }
-@media screen and (min-width: 475px) {
-  .forecast-main .forecast-condition {
-    display: flex;
-    text-align: center;
-    justify-content: space-between;
-    align-items: center;
-
-    margin: 3px 0;
-    padding: 5px;
-  }
+@media screen and (max-width: 475px) {
   .forecast-main .forecast-condition .content {
     display: block;
     margin-top: 3px;
