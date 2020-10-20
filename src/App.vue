@@ -12,6 +12,7 @@
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   </div>
 </template>
@@ -21,6 +22,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import WeatherApp from "./components/WeatherApp";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import WeatherService from "./services/WeatherService.js";
 
 export default {
@@ -28,6 +30,7 @@ export default {
   components: {
     WeatherApp,
     Header,
+    Footer,
   },
 
   data() {

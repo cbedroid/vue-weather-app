@@ -16,6 +16,7 @@
           </Forecast>
         </div>
       </div>
+      <div class="breadcrumb-wrapper"></div>
       <WeeklyWeather :dailyforecast="this.weather.daily"> </WeeklyWeather>
     </div>
   </div>

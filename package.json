@@ -25,6 +25,7 @@
     "popper.js": "^1.16.1",
     "postcss-loader": "^4.0.4",
     "sass-loader": "^10.0.3",
+    "save": "^2.4.0",
     "vue": "^2.6.11",
     "vue-loader": "^15.9.3"
   },

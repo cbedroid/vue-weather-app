@@ -210,7 +210,6 @@ class WeatherService {
 
       let url = `https://api.openweathermap.org/data/2.5/weather?q=${this.location},US&units=${this.unit}&appid=${this.api_key}`;
       let await_results = await this.fetchWeather(url);
-      console.log("Weather Results", await_results);
       try {
         if (await_results["cod"] == "404" || await_results["code"]) {
           this.observeResults(false, {
@@ -236,7 +235,6 @@ class WeatherService {
   async weeklyWeather(coord) {
     let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&units=${this.unit}&exclude=hourly,minutely&appid=${this.api_key}`;
     let forecast = await this.fetchWeather(url);
-    console.log("Weekly forecast", forecast);
     let daily = forecast["daily"];
 
     // remove the first forecast if forecast exist
@@ -270,7 +268,6 @@ class WeatherService {
         };
         return { day, night };
       });
-      console.log("DAILY", this.daily);
     }
   }
 }
