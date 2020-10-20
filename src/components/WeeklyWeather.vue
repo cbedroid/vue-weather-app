@@ -110,7 +110,7 @@ export default {
     },
     crumbList() {
       /* Boolean Array queue that determines and handles
-        which weekly weather  forecast to  displayed 
+        which weekly weather forecast to displayed 
         **** MOBILE USE ONLY  --See BreadCrumb component***
       */
       let breadcrumb = [];
@@ -123,7 +123,7 @@ export default {
       return breadcrumb;
     },
     isDayTime() {
-      /* Return whether its day or night (in 24hr format)*/
+      /* Return whether its daytime or night-time (in 24hr format)*/
       let sunrise = 5;
       let sunset = 18;
       let daytime = new Date().getHours();
@@ -132,7 +132,7 @@ export default {
   },
   methods: {
     displayForecast(index) {
-      /* Handle BreadCrumb click and shows an individual 
+      /* Handles BreadCrumb click and shows an individual 
          weekly forecst for the week. (Mobile ONLY)
       */
 
@@ -163,7 +163,7 @@ export default {
       this.dailyforecast[index]["hovering"] = hoverstate;
     },
     isHovering(forecast) {
-      /* hovering will revserse the current day time from night to day
+      /* Hovering will reverse the current day time from night to day
        and vice versa
        */
       try {
@@ -180,14 +180,14 @@ export default {
     },
 
     getDay(date) {
-      /* Return day of week */
+      /* Returns day of week */
 
       let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
       let datetime = new Date(date * 1000).getDay();
       return days[datetime] || "N/A";
     },
     forecast_icon(forecast) {
-      /* Return image url for icon */
+      /* Returns image url for icon */
       return `http://openweathermap.org/img/wn/${forecast["icon"]}.png`;
     },
   },
