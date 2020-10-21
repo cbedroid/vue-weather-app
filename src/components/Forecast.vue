@@ -58,7 +58,7 @@ export default {
   computed: {
     current_date() {
       let datetime = new Date().getTime();
-      return this.convertDate(datetime);
+      return this.$parent.convertDate(datetime);
     },
     current_temperature() {
       let temp = this.temperature ? Math.round(this.temperature.temp) : "";
@@ -82,33 +82,7 @@ export default {
       return `http://openweathermap.org/img/wn/${icon}@2x.png`;
     },
   },
-  methods: {
-    convertDate(datetime) {
-      if (datetime !== undefined) {
-        let td = new Date(datetime);
-        let months = [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "June",
-          "July",
-          "Aug",
-          "Sept",
-          "Oct",
-          "Nov",
-          "Dec",
-        ];
-        let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-        let day = days[td.getDay()];
-        let date = td.getDate();
-        let month = months[td.getMonth()];
-        let year = td.getFullYear();
-        return `${day}, ${month} ${date}, ${year}`;
-      }
-    },
-  },
+  methods: {},
 };
 </script>
 
