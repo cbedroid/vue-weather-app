@@ -35,11 +35,16 @@
           >
             <div class="daytime text-primary ">
               <p class=" d-block px-4 w-100">
-                {{ getDay(forecast.dt) }}
+                {{ isMobile ? fullDate(forecast.dt) : getDay(forecast.dt) }}
               </p>
+
               <div class="hidden">{{ isHovering(forecast) }}</div>
             </div>
-            <div class="content">
+            <small class="pa-n5" v-show="isMobile ? true : false"
+              >Click here to view the
+              {{ isDayTime ? "night time" : "day time" }} forecast
+            </small>
+            <div class="content ">
               <b-img
                 blank-color="#777"
                 :src="forecast_icon(forecast)"
@@ -110,7 +115,7 @@ export default {
     },
     crumbList() {
       /* Boolean Array queue that determines and handles
-        which weekly weather forecast to displayed 
+        which weekly weather forecast to displayed
         **** MOBILE USE ONLY  --See BreadCrumb component***
       */
       let breadcrumb = [];
@@ -124,15 +129,15 @@ export default {
     },
     isDayTime() {
       /* Return whether its daytime or night-time (in 24hr format)*/
-      let sunrise = 5;
-      let sunset = 18;
+      let sunrise = 5; // 5am
+      let sunset = 18; // 6pm
       let daytime = new Date().getHours();
-      return sunrise <= daytime <= sunset;
+      return daytime >= sunrise && daytime <= sunset;
     },
   },
   methods: {
     displayForecast(index) {
-      /* Handles BreadCrumb click and shows an individual 
+      /* Handles BreadCrumb click and shows an individual
          weekly forecst for the week. (Mobile ONLY)
       */
 
@@ -168,7 +173,8 @@ export default {
        */
       try {
         let hoverstate = forecast["hovering"];
-        return hoverstate === true ? !this.isDayTime : this.isDayTime;
+        let ishovering = hoverstate === true ? !this.isDayTime : this.isDayTime;
+        return ishovering;
       } catch {
         return false;
       }
@@ -185,6 +191,11 @@ export default {
       let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
       let datetime = new Date(date * 1000).getDay();
       return days[datetime] || "N/A";
+    },
+    fullDate(datetime) {
+      /* Returns full date  of week */
+      datetime;
+      return this.$parent.convertDate(datetime * 1000);
     },
     forecast_icon(forecast) {
       /* Returns image url for icon */

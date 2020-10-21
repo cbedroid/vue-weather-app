@@ -8,7 +8,7 @@
 
 # Vue Weather App
 
-A Vue Weather Appication that fetches the current weather forecast from local cities and states using [OpenWeather API](https://openweathermap.org/)
+A Vue Weather Application that fetches the current weather forecast from local cities and states using [OpenWeather API](https://openweathermap.org/)
 
 ### DEMO **:rocket: [RUN DEMO](https://cbedroid.github.io/vue-weather-app/)**
 
@@ -35,15 +35,15 @@ A Vue Weather Appication that fetches the current weather forecast from local ci
 <ul>
 <li style="display:flex; align-items:center;margin:5px;">
 
-<img style="margin-right: 10px" src="https://vuejs.org/images/logo.png "  width="40" height="40" />
+<span><img style="margin-right: 10px" src="https://vuejs.org/images/logo.png "  width="40" height="40" /></span>
 
-[![VueJS](https://img.shields.io/badge/VueJs-v2.17.3-blue)](http://vuejs.org)
+<span>[![VueJS](https://img.shields.io/badge/VueJs-v2.17.3-blue)](http://vuejs.org)</span>
 
 </li>
 <li style="display:flex; align-items:center;margin:5px;">
-  <img style="margin-right: 10px" src="https://pbs.twimg.com/profile_images/1273081551354396672/-Tzadxix_400x400.jpg"  width="40" height="40" />
+  <span><img style="margin-right: 10px" src="https://pbs.twimg.com/profile_images/1273081551354396672/-Tzadxix_400x400.jpg"  width="40" height="40" /></span>
 
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-v4.5-purple)](https://getbootstrap.com)
+<span>[![Bootstrap](https://img.shields.io/badge/Bootstrap-v4.5-purple)](https://getbootstrap.com)</span>
 
 </li>
 </ul>
