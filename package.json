@@ -25,10 +25,7 @@
     "popper.js": "^1.16.1",
     "postcss-loader": "^4.0.4",
     "sass-loader": "^10.0.3",
-<<<<<<< HEAD
     "save": "^2.4.0",
-=======
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
     "vue": "^2.6.11",
     "vue-loader": "^15.9.3"
   },

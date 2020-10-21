@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div id="weather-week_main">
     <div id="wf_bc_main" :class="!isMobile ? 'hidden' : ''">
       <WeekBreadCrumb
@@ -92,52 +91,6 @@ export default {
   components: {
     WeekBreadCrumb: BreadCrumb,
   },
-=======
-  <div id="weather-week_main" class="mt-3 container ">
-    <ul class="weather-week-list p-0  row justify-content-center">
-      <li
-        class="forecast-item font-weight-bold mx-1 p-0 col-12 col-sm-3 col-md-2 "
-        v-for="(fc, index) in dailyforecast"
-        :forecast="(forecast = currentForecast(fc, (hoverstate = false)))"
-        v-bind:key="index"
-        @mouseenter="toggleHover(forecast, index, true)"
-        @mouseleave="toggleHover(forecast, index, false)"
-      >
-        <div class="item-wrapper " :class="forecast['className']">
-          <div class="daytime text-primary ">
-            <p class=" d-block px-4 w-100">
-              {{ getDay(forecast.dt) }}
-            </p>
-          </div>
-          <div class="content">
-            <b-img
-              blank-color="#777"
-              :src="forecast_icon(forecast)"
-              alt="forecast icon"
-            >
-            </b-img>
-
-            <div class="temp">
-              <b-icon
-                icon="thermometer"
-                :variant="forecast['temp'] < 75 ? 'primary' : 'danger'"
-              ></b-icon>
-              {{ forecast["temp"] }} &deg;
-            </div>
-            <div class="condition">
-              {{ forecast["weather"]["main"] }}
-            </div>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-</template>
-<script>
-export default {
-  name: "WeeklyWeather",
-  components: {},
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
 
   props: {
     dailyforecast: {
@@ -147,7 +100,6 @@ export default {
   },
   data() {
     return {
-<<<<<<< HEAD
       mobile_hide: [],
       mobile_size: 475,
     };
@@ -208,30 +160,6 @@ export default {
     },
     getHoverState(forecast, index, hoverstate) {
       /* Change the hovering attribute on a forecast item
-=======
-      normal: true,
-    };
-  },
-  computed: {
-    isDayTime() {
-      // military time
-      let sunrise = 6;
-      let sunset = 18;
-      let daytime = new Date().getTime();
-      return sunrise < daytime > sunset;
-    },
-  },
-
-  methods: {
-    currentForecast(forecast) {
-      /* Returns day or night forecast.*/
-
-      let fc = this.isHovering(forecast) ? forecast["day"] : forecast["night"];
-      return fc;
-    },
-    toggleHover(forecast, index, hoverstate) {
-      /* Change the hovering attribute on forecast item
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
          Removes and sets the hovering state of each individualforecast
       */
       forecast["hovering"] = hoverstate; //          Apparently.. This is needed to update DOM ??
@@ -240,27 +168,18 @@ export default {
       this.dailyforecast[index]["hovering"] = hoverstate;
     },
     isHovering(forecast) {
-<<<<<<< HEAD
       /* Hovering will reverse the current day time from night to day
-=======
-      /* hovering will revserse the current day time from night to day
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
        and vice versa
        */
       try {
         let hoverstate = forecast["hovering"];
-<<<<<<< HEAD
         let ishovering = hoverstate === true ? !this.isDayTime : this.isDayTime;
         return ishovering;
-=======
-        return hoverstate ? !this.DayTime : this.DayTime;
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
       } catch {
         return false;
       }
     },
     get_temp(temp) {
-<<<<<<< HEAD
       /* Return the current weather's temperature */
       let time_of_day = this.isDayTime ? "day" : "night";
       return Math.round(temp[time_of_day]);
@@ -269,17 +188,10 @@ export default {
     getDay(date) {
       /* Returns day of week */
 
-=======
-      let time_of_day = this.isDayTime ? "day" : "night";
-      return Math.round(temp[time_of_day]);
-    },
-    getDay(date) {
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
       let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
       let datetime = new Date(date * 1000).getDay();
       return days[datetime] || "N/A";
     },
-<<<<<<< HEAD
     fullDate(datetime) {
       /* Returns full date  of week */
       datetime;
@@ -287,19 +199,12 @@ export default {
     },
     forecast_icon(forecast) {
       /* Returns image url for icon */
-=======
-    forecast_icon(forecast) {
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
       return `http://openweathermap.org/img/wn/${forecast["icon"]}.png`;
     },
   },
 };
 </script>
-<<<<<<< HEAD
 <style>
-=======
-<style scoped>
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
 .weather-week-list li {
   list-style: none;
   border: 1px solid #fff;
@@ -307,16 +212,6 @@ export default {
   transition: 0.25s ease-in-out;
 }
 
-<<<<<<< HEAD
-=======
-.forecast-item:hover {
-  border: 1px solid #000;
-  box-shadow: 4px 2px 6px #000;
-  transform: scale(1.25);
-  z-index: 100;
-}
-
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
 .daytime {
   background: #fff;
   width: 100%;
@@ -339,7 +234,6 @@ export default {
   background: #1c1c1c;
   color: whitesmoke;
 }
-<<<<<<< HEAD
 .hidden {
   display: none;
 }
@@ -413,15 +307,12 @@ export default {
 #wf_breadcrumb ul li:nth-child(7)::before {
   background: purple;
 }
-=======
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
 @media screen and (max-width: 575px) {
   .weather-week-list li .content {
     display: flex;
     justify-content: space-around;
     align-items: center;
   }
-<<<<<<< HEAD
 
   .forecast-item {
     margin-bottom: 5px;
@@ -456,7 +347,5 @@ export default {
     transform: rotateX(0deg) translateX(0%) scale(1);
     width: 100%;
   }
-=======
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
 }
 </style>

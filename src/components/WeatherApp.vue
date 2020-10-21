@@ -16,10 +16,7 @@
           </Forecast>
         </div>
       </div>
-<<<<<<< HEAD
       <div class="breadcrumb-wrapper"></div>
-=======
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
       <WeeklyWeather :dailyforecast="this.weather.daily"> </WeeklyWeather>
     </div>
   </div>
@@ -63,7 +60,6 @@ export default {
     },
   },
   methods: {
-<<<<<<< HEAD
     convertDate(datetime) {
       if (datetime !== undefined) {
         let td = new Date(datetime);
@@ -89,8 +85,6 @@ export default {
         return `${day}, ${month} ${date}, ${year}`;
       }
     },
-=======
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
     getWeather(location) {
       this.error = false;
       let params = { location: location };

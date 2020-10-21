@@ -12,10 +12,7 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
       <Footer></Footer>
-=======
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
     </div>
   </div>
 </template>
@@ -25,10 +22,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import WeatherApp from "./components/WeatherApp";
 import Header from "./components/Header";
-<<<<<<< HEAD
 import Footer from "./components/Footer";
-=======
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
 import WeatherService from "./services/WeatherService.js";
 
 export default {
@@ -36,10 +30,7 @@ export default {
   components: {
     WeatherApp,
     Header,
-<<<<<<< HEAD
     Footer,
-=======
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
   },
 
   data() {
