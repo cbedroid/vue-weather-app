@@ -58,11 +58,7 @@ export default {
   computed: {
     current_date() {
       let datetime = new Date().getTime();
-<<<<<<< HEAD
       return this.$parent.convertDate(datetime);
-=======
-      return this.convertDate(datetime);
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
     },
     current_temperature() {
       let temp = this.temperature ? Math.round(this.temperature.temp) : "";
@@ -86,37 +82,7 @@ export default {
       return `http://openweathermap.org/img/wn/${icon}@2x.png`;
     },
   },
-<<<<<<< HEAD
   methods: {},
-=======
-  methods: {
-    convertDate(datetime) {
-      if (datetime !== undefined) {
-        let td = new Date(datetime);
-        let months = [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "June",
-          "July",
-          "Aug",
-          "Sept",
-          "Oct",
-          "Nov",
-          "Dec",
-        ];
-        let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-        let day = days[td.getDay()];
-        let date = td.getDate();
-        let month = months[td.getMonth()];
-        let year = td.getFullYear();
-        return `${day}, ${month} ${date}, ${year}`;
-      }
-    },
-  },
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
 };
 </script>
 
@@ -131,7 +97,6 @@ export default {
   font-weight: 600;
 }
 
-<<<<<<< HEAD
 .forecast-main .forecast-condition {
   display: flex;
   text-align: center;
@@ -140,8 +105,6 @@ export default {
   margin: 3px 0;
   padding: 5px;
 }
-=======
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
 .forecast-container .label {
   text-align: left;
   font-size: 1rem;
@@ -166,20 +129,7 @@ export default {
     padding: 0 15px;
   }
 }
-<<<<<<< HEAD
 @media screen and (max-width: 475px) {
-=======
-@media screen and (min-width: 475px) {
-  .forecast-main .forecast-condition {
-    display: flex;
-    text-align: center;
-    justify-content: space-between;
-    align-items: center;
-
-    margin: 3px 0;
-    padding: 5px;
-  }
->>>>>>> 8aa008c4023a1300fb47dc43c495b249f7b58c3d
   .forecast-main .forecast-condition .content {
     display: block;
     margin-top: 3px;
