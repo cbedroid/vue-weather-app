@@ -171,7 +171,7 @@ footer:hover {
     transform: rotateX(-90deg) translateZ(-50px);
     opacity: 0.2;
     width: 100%;
-    height: 0%;
+    height: 0;
   }
   25% {
     transform: rotateX(-70deg) translateZ(-35px);
