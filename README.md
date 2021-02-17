@@ -19,8 +19,8 @@ A Vue Weather Application that fetches the current weather forecast from local c
 ### Mobile View
 
 <div align=center styles="width:100%; display: grid; margin: auto;">
-  <img src="https://user-images.githubusercontent.com/54720725/96679216-3224b300-1341-11eb-81b7-5e5c7c7cf843.png" height=276 />
-  <img src="https://user-images.githubusercontent.com/54720725/96678125-0c96aa00-133f-11eb-8c6d-a78af17807a8.png"/>
+  <img src="https://user-images.githubusercontent.com/54720725/96679216-3224b300-1341-11eb-81b7-5e5c7c7cf843.png"  width=320/>
+  <img src="https://user-images.githubusercontent.com/54720725/96678125-0c96aa00-133f-11eb-8c6d-a78af17807a8.png"  width=320/>
   
 </div>
 
@@ -97,7 +97,7 @@ $  yarn serve
 
 **..So you found a bug :bug: now what...**
 
-Just open up an issue and describe the problems your are experiencing.
+Just open up an issue and describe the problems you are experiencing.
 
 - [issue][link-issue] - Describe the bug you are having here
 
