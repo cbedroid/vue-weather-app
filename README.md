@@ -11,16 +11,16 @@ A Vue Weather Application that fetches the current weather forecast from local c
 
 ---
 
-<div styles="display: grid">
-   <img src="https://user-images.githubusercontent.com/54720725/96678267-626b5200-133f-11eb-8b57-85cd4ce32827.png" width=45%/>
-  <img src="https://user-images.githubusercontent.com/54720725/96677868-78c4de00-133e-11eb-82ce-20005baa2a37.png" width=45%/>
+ <div align=center styles="width:100%; display: grid; margin: auto;">
+   <img src="https://user-images.githubusercontent.com/54720725/96678267-626b5200-133f-11eb-8b57-85cd4ce32827.png" width=420 height=300/>
+  <img src="https://user-images.githubusercontent.com/54720725/96677868-78c4de00-133e-11eb-82ce-20005baa2a37.png" width=420 height=300/>
 </div>
 
 ### Mobile View
 
 <div align=center styles="width:100%; display: grid; margin: auto;">
-  <img src="https://user-images.githubusercontent.com/54720725/96679216-3224b300-1341-11eb-81b7-5e5c7c7cf843.png"  width=320/>
-  <img src="https://user-images.githubusercontent.com/54720725/96678125-0c96aa00-133f-11eb-8c6d-a78af17807a8.png"  width=320/>
+  <img src="https://user-images.githubusercontent.com/54720725/96679216-3224b300-1341-11eb-81b7-5e5c7c7cf843.png"  width=420 height=360/>
+  <img src="https://user-images.githubusercontent.com/54720725/96678125-0c96aa00-133f-11eb-8c6d-a78af17807a8.png"  width=420/ height=360>
   
 </div>
 
