@@ -1,0 +1,5 @@
+-[X] Get user Location on startup.
+-[] Add method to fetch weather for a given location. 
+-[] Create weekly forecast design and layout .
+-[ ] Add search form to search any city in the world.
+-[ ] Add error feedback screen for invalid search.
