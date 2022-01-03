@@ -1,16 +1,16 @@
 <template>
   <div id="app" class="min-h-screen h-full">
     <section id="main">
-      <WeatherApp />
+      <weather-app />
     </section>
   </div>
 </template>
 
 <script>
-import WeatherApp from "./components/WeatherApp.vue";
+import WeatherApp from './components/WeatherApp.vue';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     WeatherApp,
   },
@@ -19,7 +19,7 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

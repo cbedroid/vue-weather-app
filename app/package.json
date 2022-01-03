@@ -33,27 +33,19 @@
     "@vue/cli-plugin-eslint": "~5.0.0-rc.1",
     "@vue/cli-service": "^4.5.15",
     "axios": "^0.24.0",
+    "babel-eslint": "^10.1.0",
     "country-state-city": "^3.0.1",
     "daisyui": "^1.20.0",
     "electron": "^16.0.5",
     "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "prettier": "2.5.1",
     "vue-cli-plugin-tailwind": "~2.2.18",
     "vuex": "^4.0.2"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    },
-    "rules": {}
   },
   "browserslist": [
     "> 1%",

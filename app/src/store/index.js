@@ -1,13 +1,10 @@
-import { createStore } from "vuex";
+import { createStore } from 'vuex';
 import weather from './modules/weather';
-
-
 
 // Create store
 const store = createStore({
   modules: {
-    weather
+    weather,
   },
-
 });
 export default store;
